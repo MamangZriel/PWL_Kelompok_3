@@ -8,65 +8,68 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<head>
+    ...
     <style>
+        body {
+        padding-top: 70px; /* navbar tinggi biasanya sekitar 56-70px */
+    }
+
         .navbar-brand {
             font-weight: bold;
             color: #dc3545 !important;
         }
+
         .card {
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
+
         .card:hover {
             transform: translateY(-2px);
         }
+
         .btn-cinema {
             background: linear-gradient(45deg, #dc3545, #fd7e14);
             border: none;
             color: white;
+            transition: all 0.3s ease;
         }
+
         .btn-cinema:hover {
             background: linear-gradient(45deg, #c82333, #e8590c);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        .btn-cinema {
-    background: linear-gradient(45deg, #dc3545, #fd7e14);
-    border: none;
-    color: white;
-    transition: all 0.3s ease;
-}
 
-.btn-cinema:hover {
-    background: linear-gradient(45deg, #c82333, #e8590c);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
+        .card-img-top {
+            border-radius: 0.375rem 0.375rem 0 0;
+        }
 
-.card-img-top {
-    border-radius: 0.375rem 0.375rem 0 0;
-}
+        .badge {
+            font-size: 0.875rem;
+        }
 
-.badge {
-    font-size: 0.875rem;
-}
+        .text-warning {
+            color: #ffc107 !important;
+        }
 
-.text-warning {
-    color: #ffc107 !important;
-}
-
-.form-control:focus,
-.form-select:focus {
-    border-color: #dc3545;
-    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
-}
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
     </style>
+
+</head>
+
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('movies.index') }}">
-                <i class="fas fa-film me-2"></i>CinemaApp
+            <a class="navbar-brand" href="{{ route('dashboard') }}">
+                <i class="fas fa-film me-2"></i>Cinema Apps
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -88,11 +91,7 @@
                             <i class="fas fa-clock me-1"></i>Jadwal
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tickets.index') }}">
-                            <i class="fas fa-ticket-alt me-1"></i>Tiket
-                        </a>
-                    </li>
+
                 </ul>
                 <ul class="navbar-nav">
                     @guest
@@ -123,9 +122,11 @@
         </div>
     </nav>
 
-    <main class="py-4">
+<main class="py-4">
+    <div class="container">
         @yield('content')
-    </main>
+    </div>
+</main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -18,7 +18,7 @@ class CreateMoviesTable extends Migration
             $table->string('cast');
             $table->date('release_date');
             $table->string('poster')->nullable();
-            $table->decimal('rating', 25, 99)->default(0);
+            $table->decimal('rating', 5, 2)->default(0);
             $table->enum('status', ['coming_soon', 'now_showing', 'ended'])->default('coming_soon');
             $table->timestamps();
         });
